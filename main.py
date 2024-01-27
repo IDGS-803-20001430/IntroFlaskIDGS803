@@ -70,5 +70,9 @@ def resultado():
         num2=request.form.get("n2")
         return "<h1>La multiplicacion es: {}</h1>".format(str(int(num1)*int(num2)))
 
+@app.route("/formulario2")
+def formulario2():
+    return render_template("formulario2.html")
+
 if __name__=="__main__":
     app.run(debug=True)
