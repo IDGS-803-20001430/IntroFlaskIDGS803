@@ -1,5 +1,6 @@
 from flask import Flask,render_template,request
 
+import forms
 app = Flask(__name__)
 
 
@@ -9,9 +10,21 @@ def index():
     alumnos=["Mario","Pedro","Luis","Dario"]
     return render_template("index.html",escuela=escuela,alumnos=alumnos)
 
-@app.route("/alumnos")
-def alumnos():
-    return render_template("alumnos.html")
+@app.route("/alumnos",methods=["GET","POST"])
+def alum():
+    nom=""
+    apa=""
+    ama=""
+    alum_form=forms.UsersForm(request.form)
+    if request.method=='POST':
+        nom=alum_form.nombre.data
+        apa=alum_form.apaterno.data
+        ama=alum_form.amaterno.data
+        print("NOMBRE: {}".format(nom))
+        print("APATERNO: {}".format(apa))
+        print("AMATERNO: {}".format(ama))
+
+    return render_template("alumnos.html", form=alum_form, nom=nom, apa=apa, ama=ama)
 
 @app.route("/maestros")
 def maes():
