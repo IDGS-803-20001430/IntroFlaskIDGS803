@@ -5,7 +5,7 @@
 {% import "_macros.html" as macros %}
     <h1>Alumnos</h1>
 
-    <form action="" method="post">
+    <form action="" method="post" novalidate>
         {{macros.render_field(form.nombre,class="form-controls")}}
         {{macros.render_field(form.apaterno)}}
         {{macros.render_field(form.amaterno)}}
